@@ -6,14 +6,25 @@ height: 260px;
 display: flex;
 align-items: flex-end;
 position: relative;
->img{
-      position: absolute;
-      z-index: 1;
-      top: -10px;
-      right: 14px;
+.image{
+  position: absolute;
+  z-index: 1;
+  top: 0px;
+  right: 0px;
+  /* border: 1px red solid; */
+  width: 200px;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  img{
+    object-fit: contain;
+    width: 90%;
+    height: 90%;
       /* border: 2px solid red; */
     }
-
+}
 
 .card{
   width: 100%;
@@ -54,7 +65,7 @@ position: relative;
       text-decoration: underline;
     }
   }
-  .picture{
+  .background{
     width: 52%;
     height: 100%;
     display: flex;

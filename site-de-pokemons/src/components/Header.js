@@ -11,7 +11,6 @@ const Container = styled.div`
    div{
      width: 80%;
      height: 100%;
-     /* border: 1px solid red; */
      margin: 0 auto;
      display: flex;
      align-items: center;
@@ -20,16 +19,16 @@ const Container = styled.div`
      div{
        width: 60%;
        height: 100%;
-       /* border: 1px solid black; */
      }
+
      img{
        margin: 0 auto;
      }
+
    }
    span{
      width: 20%;
      height: 100%;
-     /* border: 1px solid red; */
      display: flex;
      align-items: center;
      justify-content: center;
