@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/static/css/main.94b8d1fc.css",
+    "main.js": "/static/js/main.c284e473.js",
+    "static/media/big-ball-card.png": "/static/media/big-ball-card.061eb8cfdddb1650c239.png",
+    "static/media/logo-pokemon.png": "/static/media/logo-pokemon.5c7c95f2d4fd0bcb6050.png",
+    "static/media/linkedin.png": "/static/media/linkedin.6e38d9596b5c5c9a419c.png",
+    "static/media/github.png": "/static/media/github.88a484797bfef6b28094.png",
+    "index.html": "/index.html",
+    "main.94b8d1fc.css.map": "/static/css/main.94b8d1fc.css.map",
+    "main.c284e473.js.map": "/static/js/main.c284e473.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.94b8d1fc.css",
+    "static/js/main.c284e473.js"
+  ]
+}

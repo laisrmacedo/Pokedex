@@ -19,15 +19,21 @@ const Container = styled.div`
      display: flex;
      align-items: center;
      justify-content: space-between;
+     >span{
+       width: 20%;
+       height: 100%;
+       display: flex;
+       align-items: center;
+       /* border: 1px red solid; */
+     }
     }
 
-   span{
-     width: 20%;
-     height: 100%;
-     display: flex;
-     align-items: center;
-     /* justify-content: center; */
-   }
+    @media screen and (max-width: 425px){
+    img{
+      width: 45%;
+    }
+  }
+
 `
 const ButtonGreen = styled.button`
   padding: 19px 40px;
@@ -40,10 +46,11 @@ const ButtonGreen = styled.button`
   cursor: pointer;
 `
 const ButtonBlue = styled.button`
-  padding: 19px 90.5px;
+  /* padding: 19px 90.5px; */
   background-color: #33A4F5;
   border: none;
   width: 100%;
+  height: 40%;
   border-radius: 5px;
   font-size: 18px;
   cursor: pointer;
@@ -52,19 +59,56 @@ const ButtonBlack = styled.button`
   background-color: white;
   border: none;
   color: black;
-  text-decoration: underline;
   font-size: 18px;
   cursor: pointer;
+  display: flex;
+  justify-content: flex-start;
+  p{
+    text-decoration: underline;
+    border: 1px red solid;
+    color: black;
+  }
+  @media screen and (max-width: 1024px){
+  font-size: 44px;
+    p{
+      display: none;
+    }
+  }
 `
 const ButtonRed = styled.button`
-  padding: 19px 40px;
+  /* padding: 19px 40px; */
   width: 100%;
+  height: 40%;
   background-color: #FF6262;
   border: none;
   border-radius: 5px;
   font-size: 16px;
   font-weight: 100;
   cursor: pointer;
+  span{
+    display: none;
+  }
+
+  @media screen and (max-width: 1024px){
+    height: 30%;
+
+    span{
+      font-size: 24px;
+      display: flex;
+      justify-content: center;
+    }
+    p{
+      display: none;
+    }
+  }
+  @media screen and (max-width: 425px){
+    height: 25%;
+    width: 80%;
+    span{
+      font-size: 18px;
+      /* display: none; */
+    }
+  }
 `
 
 
@@ -83,7 +127,7 @@ export const Header = (props) => {
     if(pokemonFound.length === 0){
       return setButton(<ButtonGreen onClick={() => sendToPokedex(name)}>Capturar!</ButtonGreen>) 
     }else{
-      return setButton(<ButtonRed onClick={() => deletePokemon(name)}>Excluir da Pokédex</ButtonRed>) 
+      return setButton(<ButtonRed onClick={() => deletePokemon(name)}><span>X</span><p>Excluir da Pokédex</p></ButtonRed>) 
     }
   }
   
@@ -92,10 +136,10 @@ export const Header = (props) => {
   }, [listPokedex])
 
   return (
-    <Container>
+    <Container screen={true}>
       <div>
         <span>
-          {props.isAllPokemons && <ButtonBlack onClick={() => goToHomePage(navigate)}>&lt; Todos os Pokemóns</ButtonBlack>}
+          {props.isAllPokemons && <ButtonBlack onClick={() => goToHomePage(navigate)}>&lt; <p>Todos os Pokemóns</p></ButtonBlack>}
         </span>
         <img src={logoPokemon}/>
         <span>
