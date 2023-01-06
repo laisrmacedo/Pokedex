@@ -1,18 +1,18 @@
 import { Container, PokemonTypes, ButtonRed } from './styled'
-import grass from "../../assets/types/grass.png";
 import ball from "../../assets/small-ball-card.png";
 import {useNavigate} from 'react-router-dom'
 import {goToDetailsPage} from '../../router/coordinator'
 import {getTypes} from '../../utils/returnPokemonType'
 import {getColors} from '../../utils/returnCardColor'
-
+import { GlobalContext } from '../../context/GlobalContext';
+import {useContext} from 'react'
 
 export const Card = (props) => {
-  const { pokemon, color } = props
-  // console.log(color)
-
   const navigate = useNavigate()
-  // console.log(pokemon.types != undefined)
+  const { pokemon} = props
+  const context = useContext(GlobalContext)
+  const {getInfoPokemon} = context
+
   return (
     <Container color={pokemon.types != undefined && getColors(pokemon.types[0].type.name)}>
       <div className='image'>
@@ -25,17 +25,21 @@ export const Card = (props) => {
             <h1>{pokemon.name}</h1>
             <PokemonTypes>
               {pokemon.types?.map((type) => {
-                // console.log(type.type.name)
                 return <img key={type.type.name} src={getTypes(type.type.name)} />
               })}
             </PokemonTypes>
           </div>
-          <button onClick={() => goToDetailsPage(navigate, pokemon.id)}>Detalhes</button>
+          <button onClick={() => getInfoPokemon(pokemon.name) && goToDetailsPage(navigate, pokemon.name)}>Detalhes</button>
         </div>
         <div className='background'>
           <img src={ball} />
-          {props.isHomePage && <button onClick={() => props.sendToPokedex(pokemon)}>Capturar!</button>}
-          {props.isPokedexPage && <ButtonRed onClick={() => props.deletePokemon(pokemon.id)}>Excluir</ButtonRed>}
+          {props.isHomePage && 
+            <button 
+              disabled={props.pokemonFound != undefined? true : false} 
+              onClick={() => props.sendToPokedex(pokemon.name)}>
+              {props.pokemonFound != undefined? "Capturado ✔" : "Capturar!"}
+            </button>}
+          {props.isPokedexPage && <ButtonRed onClick={() => props.deletePokemon(pokemon.name)}>Excluir</ButtonRed>}
         </div>
       </div>
     </Container>

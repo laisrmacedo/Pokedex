@@ -3,20 +3,16 @@ import axios from "axios";
 import { useContext, useEffect, useState } from 'react';
 import { GlobalContext } from '../../context/GlobalContext';
 import {Card} from './Card'
-import {getColors} from '../../utils/returnCardColor'
 
 export const CardHome = (props) => {
-  const { url } = props
+  const { name } = props
 
   const [pokemon, setPokemon] = useState({})
 
   const getInfoPokemon = async () => {
     try {
-      await axios.get(url)
-      .then((response) => {
-        // console.log(response.data)
-        setPokemon(response.data)
-      })
+      const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${name}`)
+      setPokemon(response.data)
     } catch (error) {
       console.log(error.message)
     }
@@ -27,27 +23,17 @@ export const CardHome = (props) => {
   }, [])
 
   const context = useContext(GlobalContext)
-
   const {listPokedex, sendToPokedex} = context
 
-  // const sendToPokedex = (captured) => {
-  //   const newList = [...listPokedex]
-  //   const pokemonFound = listPokedex.find((element) => {
-  //     return element.id === captured.id
-  //   })
-
-  //   if(!pokemonFound){
-  //     newList.push(captured)
-  //   }
-  //   console.log("capturar")
-  //   setListPokedex(newList)
-  // }
-
+  const pokemonFound = listPokedex.find((element) => {
+    return element.name === pokemon.name
+  })
 
   return (
     <Container>
       {listPokedex && <Card 
-        pokemon={pokemon} 
+        pokemon={pokemon}
+        pokemonFound={pokemonFound}
         sendToPokedex={sendToPokedex} 
         isHomePage={true}
       />}

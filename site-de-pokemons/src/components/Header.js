@@ -70,25 +70,25 @@ const ButtonRed = styled.button`
 
 export const Header = (props) => {
   const navigate = useNavigate()
-  const { id } = useParams();
+  const { name } = useParams();
   const context = useContext(GlobalContext)
   const {listPokedex, sendToPokedex, deletePokemon} = context
 
   const [button, setButton] = useState("")
 
-  const updateButton = (id) => {
+  const updateButton = (name) => {
     const newList = [...listPokedex]
-    const pokemonFound = newList.filter((element) => element.id == id)
+    const pokemonFound = newList.filter((element) => element.name == name)
     
     if(pokemonFound.length === 0){
-      return setButton(<ButtonGreen onClick={() => sendToPokedex(id)}>Capturar!</ButtonGreen>) 
+      return setButton(<ButtonGreen onClick={() => sendToPokedex(name)}>Capturar!</ButtonGreen>) 
     }else{
-      return setButton(<ButtonRed onClick={() => deletePokemon(id)}>Excluir da Pokédex</ButtonRed>) 
+      return setButton(<ButtonRed onClick={() => deletePokemon(name)}>Excluir da Pokédex</ButtonRed>) 
     }
   }
   
   useEffect(() => {
-    updateButton(id)
+    updateButton(name)
   }, [listPokedex])
 
   return (

@@ -43,16 +43,15 @@ export const HomePage = () => {
 
   useEffect(() => {
     getPokemonData()
-
   }, [])
 
   const getPokemonData = async () => {
-    await axios
-      .get("https://pokeapi.co/api/v2/pokemon/")
-      .then((response) => {
-        setPokemonData(response.data.results)
-      })
-      .catch((error) => console.log(error))
+    try {
+      const response = await axios.get("https://pokeapi.co/api/v2/pokemon/?offset=0&limit=21")
+      setPokemonData(response.data.results)
+    } catch (error) {
+      console.log(error)
+    }
   }  
 
   return (
@@ -64,7 +63,7 @@ export const HomePage = () => {
           <div>
             {pokemonData && pokemonData.map((item) => {
               return (<div key={item.name}>
-                <CardHome url={item.url}/>
+                <CardHome name={item.name}/>
               </div>)
             })
             }

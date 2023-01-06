@@ -1,6 +1,6 @@
 // import {Footer} from "../Footer/Footer"
 import { useParams } from 'react-router-dom'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import axios from "axios";
 import { Header } from '../../components/Header'
 import { Main, Container, Card, Left, Right, PokemonTypes, Stat } from "./styled";
@@ -8,26 +8,26 @@ import ball from "../../assets/big-ball-card.png";
 import { ChakraProvider, Progress } from '@chakra-ui/react'
 import {getTypes} from '../../utils/returnPokemonType'
 import {getColors} from '../../utils/returnCardColor'
+import { GlobalContext } from '../../context/GlobalContext';
 
 export const DetailsPage = () => {
-  const { id } = useParams();
+  const { name } = useParams();
+
+  const context = useContext(GlobalContext)
+  const {getInfoPokemon} = context
+
   const [pokemon, setPokemon] = useState({})
 
-  const getInfoPokemon = async () => {
-    try {
-      await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`)
-        .then((response) => {
-          // console.log(response.data.stats)
-          setPokemon(response.data)
-          // setImage(response.data.sprites.other.dream_world.front_default)
-        })
-    } catch (error) {
-      console.log(error.message)
-    }
-  }
-
   useEffect(() => {
-    getInfoPokemon()
+    const requestPokemon = async () => {
+      try {
+        const responsePokemon = await getInfoPokemon(name)
+        setPokemon(responsePokemon)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    requestPokemon()
   }, [])
 
 
@@ -59,24 +59,20 @@ export const DetailsPage = () => {
                       <Stat>
                         <div>
                           {pokemon.stats?.map((stat) => {
-                            return (<p>{stat.stat.name === "special-attack"? "Sp. Atk" : stat.stat.name === "special-defense"? "Sp. Def" : stat.stat.name}</p>)
+                            return (<p key={stat.stat.name} >{stat.stat.name === "special-attack"? "Sp. Atk" : stat.stat.name === "special-defense"? "Sp. Def" : stat.stat.name}</p>)
                           })}
                         </div>
                         <div>
                         {pokemon.stats?.map((stat) => {
-                            return (<p>{stat.base_stat}</p>)
+                            return (<p key={stat.stat.name} >{stat.base_stat}</p>)
                           })}
                           
                         </div>
                         <div>
                         {pokemon.stats?.map((stat) => {
-                            return (<Progress value={stat.base_stat} width="120px" />)
+                            return (<Progress key={stat.stat.name} value={stat.base_stat} width="120px" />)
                           })}
-                          
                         </div>
-
-
-
                       </Stat>
                     </ChakraProvider>
                   </div>

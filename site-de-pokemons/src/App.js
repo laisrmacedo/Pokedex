@@ -1,5 +1,6 @@
 import { useState,useEffect } from 'react';
 import { Router } from './router/Router';
+import axios from "axios";
 import {GlobalContext} from './context/GlobalContext'
 import { Modal } from './components/Modal';
 import ReactModal from 'react-modal';
@@ -16,6 +17,8 @@ function App() {
   },[listPokedex])
 
   const [modalIsOpen, setIsOpen] = useState(false)
+  const [optionModal, setOptionModal] = useState(Number)
+  // const [pokemon, setPokemon] = useState({})
 
   function handleCloseModal(){
     setIsOpen(false)
@@ -23,37 +26,54 @@ function App() {
 
   function handleOpenModal(){
     setIsOpen(true)
-    console.log("modal")
   }
 
-  const sendToPokedex = (captured) => {
-    const newList = [...listPokedex]
-    const listId = newList.map((item) => item.id)
-    console.log(listId)
-    const pokemonFound = listPokedex.find((element) => {
-      return element.id === captured.id
-    })
-
-    if(!pokemonFound){
-      newList.push(captured)
+  const getInfoPokemon = async (name) => {
+    try {
+      const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${name}`)
+      return response.data
+    } catch (error) {
+      console.log(error.message)
     }
-    setListPokedex(newList)
+  }
+
+
+  const sendToPokedex = async (name) => {
+    const newList = [...listPokedex]
+    const pokemonFound = listPokedex.find((element) => {
+      return element.name === name
+    })
+    
+    if(!pokemonFound){
+      setOptionModal(1)
+      try {
+        const clickedPokemon = await getInfoPokemon(name)
+        newList.push(clickedPokemon)
+        setListPokedex(newList)
+      } catch (error) {
+        console.log(error.message)
+      }
+    }
     handleOpenModal()
   }
 
-  const deletePokemon = (id) => {
+  const deletePokemon = (name) => {
     const newList = [...listPokedex]
     const pokemonFound = newList.filter((element) => {
-      return element.id != id
+      return element.name != name
     })
     setListPokedex(pokemonFound)
+    setOptionModal(2)
+    handleOpenModal()
   }
 
   const context = {
     listPokedex: listPokedex,
+    // pokemon:pokemon,
     setListPokedex,
     sendToPokedex,
-    deletePokemon
+    deletePokemon,
+    getInfoPokemon
   }
 
   return (
@@ -62,10 +82,10 @@ function App() {
       <ReactModal
         isOpen={modalIsOpen}
         onRequestClose={handleCloseModal}
-        className={Modal}
+        className="Modal"
         overlayClassName="Overlay"
       >
-        <Modal></Modal>
+        <Modal optionModal={optionModal}/>
       </ReactModal>
     </GlobalContext.Provider>
   );
