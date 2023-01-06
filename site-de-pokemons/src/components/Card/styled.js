@@ -1,17 +1,18 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-width: 440px;
+width: 410px;
 height: 260px;
 display: flex;
 align-items: flex-end;
 position: relative;
+/* border: 1px blue solid; */
+
 .image{
   position: absolute;
   z-index: 1;
   top: 0px;
   right: 0px;
-  /* border: 1px red solid; */
   width: 200px;
   height: 200px;
   display: flex;
@@ -30,14 +31,13 @@ position: relative;
   width: 100%;
   position: relative;
   height: 210px;
-  background-color: #729F92;
+  background-color: ${(props) => props.color};
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   color: white;
   border-radius: 14px;
-
-  
+  /* border: 2px solid red; */ 
   }
   
   .info{
@@ -47,6 +47,8 @@ position: relative;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+  /* border: red 1px solid; */
+
     >div{
       display: flex;
       flex-direction: column;
@@ -71,7 +73,8 @@ position: relative;
     display: flex;
     justify-content: end;
     align-items: flex-end;
-
+    position: relative;
+    /* border: 2px blue solid; */
 
     img{
       position: absolute;
@@ -81,14 +84,45 @@ position: relative;
       height: 100%;
     }
     button{
+      /* border: 2px red solid; */
       width: 146px;
       height: 38px;
       color: black;
       border-radius: 8px;
+      position: absolute;
+      z-index: 1;
+      bottom: 23px;
+      right: 26px;
+      cursor: pointer;
       border: none;
       font-weight: 100;
-      margin-bottom: 23px;
-      margin-right: 26px;
     }
   }
+`
+
+export const PokemonTypes = styled.div`
+  display: flex;
+  gap: 7px;
+  img{
+    height: 28px;
+  }
+`
+
+export const ButtonRed = styled.div`
+  color: white;
+  width: 146px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 38px;
+  color: white;
+  border-radius: 8px;
+  position: absolute;
+  z-index: 1;
+  bottom: 23px;
+  right: 26px;
+  cursor: pointer;
+  background-color: #FF6262;
+  font-size: 14px;
+  font-weight: 100;
 `

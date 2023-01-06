@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { Card } from "../components/Card/Card";
 import { Header } from '../components/Header'
 import axios from "axios";
+import { CardHome } from "../components/Card/CardHome";
 
 
 const Main = styled.main`
@@ -15,13 +16,14 @@ const Main = styled.main`
 `
 export const Container = styled.div`
   position: relative;
-  width: 80%;
+  width: 94%;
   margin: 0 auto;
-  max-width: 1200px;
+  max-width: 1440px;
   padding-top: 50px;
   display: flex;
   flex-direction: column;
-
+  /* border: 2px red solid; */
+  
   >h1{
     color: white;
     font-size: 44px;
@@ -31,8 +33,8 @@ export const Container = styled.div`
   >div{
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-    gap: 40px;
+    justify-content: start;
+    gap: 20px;
   }
 
 `
@@ -62,7 +64,7 @@ export const HomePage = () => {
           <div>
             {pokemonData && pokemonData.map((item) => {
               return (<div key={item.name}>
-                <Card url={item.url}/>
+                <CardHome url={item.url}/>
               </div>)
             })
             }

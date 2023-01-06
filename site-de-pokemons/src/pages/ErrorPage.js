@@ -7,9 +7,10 @@ import {Header} from '../components/Header'
 const Main = styled.main`
   display: flex;
   justify-content: center;
-  height: 78vh;
+  min-height: 78vh;
   width: 100vw;
   position: relative;
+  background-color: #5D5D5D;
 `
 export const Container = styled.div`
   position: relative;
