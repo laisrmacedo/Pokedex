@@ -1,4 +1,4 @@
-// import {Footer} from "../Footer/Footer"
+import {Footer} from "../../components/Footer"
 import { useParams } from 'react-router-dom'
 import { useState, useEffect, useContext } from 'react'
 import axios from "axios";
@@ -101,7 +101,7 @@ export const DetailsPage = () => {
           </div>
         </Container>
       </Main>
-      {/* <Footer/> */}
+      <Footer/>
     </>
   )
 }

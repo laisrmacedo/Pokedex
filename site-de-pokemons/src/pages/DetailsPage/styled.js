@@ -3,21 +3,21 @@ import styled from "styled-components";
 export const Main = styled.main`
   display: flex;
   justify-content: center;
-  min-height: 78vh;
+  min-height: calc(100vh - 160px - 120px);
   width: 100vw;
   position: relative;
   background-color: #5D5D5D;
 `
 export const Container = styled.div`
   width: 94%;
-  max-width: 1440px;
+  max-width: 1275px;
   display: flex;
   flex-direction: column;
   padding-top: 50px;
   padding-bottom: 50px;
+  /* border: 2px red solid; */
   
   >h1{
-    /* border: 2px red solid; */
     color: white;
     font-size: 44px;
     /* margin-bottom: 10px; */

@@ -13,7 +13,7 @@ const Container = styled.div`
   
    div{
      width: 94%;
-     max-width: 1440px;
+     max-width: 1275px;
      height: 100%;
      margin: 0 auto;
      display: flex;
