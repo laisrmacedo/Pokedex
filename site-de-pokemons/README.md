@@ -30,7 +30,8 @@ Esta página mostra informações adicionais sobre o pokémon selecionado.
 
 ## 📌 Como rodar este projeto?
 Você pode acessar o site clicando no link:
-pokedex.built.by.laismacedo.surge.sh
+<br/>
+[pokedex.built.by.laismacedo.surge.sh](https://pokedex.built.by.laismacedo.surge.sh/)
 
 
 ## 💻 Funcionalidades
