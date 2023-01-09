@@ -5,11 +5,12 @@
 Este projeto tem como fonte de dados a [Poke Api](https://pokeapi.co/), uma API pública muito usada para aplicações focadas no aprendizado de programação e também usada em cases de processos seletivos.
 
 ## Índice
-- <a href="#descricao">Descrição</a>
-- <a href="#como-rodar-este-projeto">Como rodar este projeto?</a>
-- <a href="#funcionalidades">Funcionalidades</a>
-- <a href="#tecnologias-utilizadas">Tecnologias Utilizadas</a>
-- <a href="#pessoas-autoras">Pessoas autoras</a>
+- [Descrição](#descrição)
+- [Como rodar este projeto?](#como-rodar-este-projeto-?)
+- [Funcionalidades](#funcionalidades)
+- [Tecnologias Utilizadas](#tecnologias-utilizadas)
+- [Pessoas autoras](#pessoas-autoras)
+
 
 ## 📝 Descrição
 Esse projeto possui três páginas: Home, Pokedex e Página de detalhes.
