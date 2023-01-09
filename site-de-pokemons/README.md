@@ -5,11 +5,11 @@
 Este projeto tem como fonte de dados a [Poke Api](https://pokeapi.co/), uma API pública muito usada para aplicações focadas no aprendizado de programação e também usada em cases de processos seletivos.
 
 ## Índice
-- [Descrição](#descrição)
-- [Como rodar este projeto?](#como-rodar-este-projeto-?)
-- [Funcionalidades](#funcionalidades)
-- [Tecnologias Utilizadas](#tecnologias-utilizadas)
-- [Pessoas autoras](#pessoas-autoras)
+- [Descrição](##descrição)
+- [Como rodar este projeto?](##como-rodar-este-projeto-?)
+- [Funcionalidades](##funcionalidades)
+- [Tecnologias Utilizadas](##tecnologias-utilizadas)
+- [Pessoas autoras](##pessoas-autoras)
 
 
 ## 📝 Descrição
