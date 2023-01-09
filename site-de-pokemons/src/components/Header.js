@@ -24,7 +24,6 @@ const Container = styled.div`
        height: 100%;
        display: flex;
        align-items: center;
-       /* border: 1px red solid; */
      }
     }
 
@@ -46,7 +45,6 @@ const ButtonGreen = styled.button`
   cursor: pointer;
 `
 const ButtonBlue = styled.button`
-  /* padding: 19px 90.5px; */
   background-color: #33A4F5;
   border: none;
   width: 100%;
@@ -65,7 +63,6 @@ const ButtonBlack = styled.button`
   justify-content: flex-start;
   p{
     text-decoration: underline;
-    border: 1px red solid;
     color: black;
   }
   @media screen and (max-width: 1024px){
@@ -76,7 +73,6 @@ const ButtonBlack = styled.button`
   }
 `
 const ButtonRed = styled.button`
-  /* padding: 19px 40px; */
   width: 100%;
   height: 40%;
   background-color: #FF6262;
