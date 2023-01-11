@@ -1,7 +1,7 @@
 import {Footer} from "../../components/Footer"
 import { useParams } from 'react-router-dom'
 import { useState, useEffect, useContext } from 'react'
-import axios from "axios";
+import { useNavigate } from 'react-router-dom'
 import { Header } from '../../components/Header'
 import { Main, Container, Card, Left, Right, PokemonTypes, Stat } from "./styled";
 import ball from "../../assets/big-ball-card.png";
@@ -9,9 +9,13 @@ import { ChakraProvider, Progress } from '@chakra-ui/react'
 import {getTypes} from '../../utils/returnPokemonType'
 import {getColors} from '../../utils/returnCardColor'
 import { GlobalContext } from '../../context/GlobalContext';
+import {goToErrorPage} from '../../router/coordinator'
+
 
 export const DetailsPage = () => {
   const { name } = useParams();
+  const navigate = useNavigate()
+
 
   const context = useContext(GlobalContext)
   const {getInfoPokemon} = context
@@ -22,7 +26,13 @@ export const DetailsPage = () => {
     const requestPokemon = async () => {
       try {
         const responsePokemon = await getInfoPokemon(name)
-        setPokemon(responsePokemon)
+
+        if(responsePokemon === undefined){
+          goToErrorPage(navigate)
+        }else{
+          setPokemon(responsePokemon)
+        }
+
       } catch (error) {
         console.log(error)
       }

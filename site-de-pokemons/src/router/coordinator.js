@@ -9,3 +9,7 @@ export const goToPokedexPage = (navigate) => {
 export const goToDetailsPage = (navigate, name) => {
   navigate(`/details/${name}`)
 }
+
+export const goToErrorPage = (navigate) => {
+  navigate(`*`)
+}

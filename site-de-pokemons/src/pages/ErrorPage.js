@@ -1,7 +1,5 @@
 import {Footer} from "../components/Footer"
 import styled from "styled-components";
-import {goToPokedexPage, goToHomePage} from '../router/coordinator'
-import { useNavigate } from 'react-router-dom'
 import {Header} from '../components/Header'
 import pikachu from '../assets/pikachu.png'
 
@@ -27,8 +25,7 @@ export const Container = styled.div`
     width: 150px;
   }
 `
-export const ErrorPage = (props) => {
-  const navigate = useNavigate()
+export const ErrorPage = () => {
   return (
     <>
       <Header isAllPokemons={true}/>
