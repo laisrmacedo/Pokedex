@@ -42,7 +42,7 @@ export const DetailsPage = () => {
 
             <Card color={pokemon.types != undefined && getColors(pokemon.types[0].type.name)}>
             {/* arrumar responsividade */}
-              <img className='ball' src={ball} />
+              <img src={ball} />
               <Left>
                 <div className='images'>
                   <div>

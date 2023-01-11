@@ -31,8 +31,8 @@ export const Card = (props) => {
           </div>
           <button onClick={() => getInfoPokemon(pokemon.name) && goToDetailsPage(navigate, pokemon.name)}>Detalhes</button>
         </div>
+        <img src={ball} />
         <div className='background'>
-          <img src={ball} />
           {props.isHomePage && 
             <button 
               disabled={props.pokemonFound != undefined? true : false} 

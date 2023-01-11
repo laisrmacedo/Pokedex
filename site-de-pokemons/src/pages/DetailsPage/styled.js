@@ -67,7 +67,18 @@ export const Card = styled.div`
   @media screen and (max-width: 425px){
     flex-direction: column-reverse;
     height: 90%;
-
+    
+  }
+  
+  >img{
+    position: absolute;
+    height: 95%;
+    z-index: 0;
+    right: 0;
+    @media screen and (max-width: 425px){
+      height:25%;
+      top: 0
+    }
   }
 
   .ball{
@@ -76,6 +87,7 @@ export const Card = styled.div`
     z-index: 0;
     right: 0;
   }
+
 
 `
 export const Left = styled.div`
@@ -140,10 +152,13 @@ export const Right = styled.div`
   .pokemonData{
     h1{
       font-size: 44px;
+      @media screen and (max-width: 425px){
+        font-size: 32px;
+      }
     }
     h2{
       font-size: 20px;
-      font-weight: 200;
+      font-weight: 800;
     }
     div{
       display: flex;

@@ -74,15 +74,19 @@ const ButtonBlue = styled.button`
   }
   @media screen and (max-width: 425px){
     width: 80%;
-    height: 30%;
+    height: 50%;
     background-color: transparent;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    /* border: 1px red solid; */
 
     p{
       display: none;
     }
     img{
       display: flex;
-      width: 100%;
+      width: 95%;
       opacity: 0.9;
     }
   }
@@ -104,15 +108,15 @@ const ButtonBlack = styled.button`
   }
 
   @media screen and (max-width: 1024px){
-  border: #E6E6E6 solid 2px;
-  border-radius: 5px;
-  font-size: 44px;
-  overflow-y: hidden;
-  width: 80%;
-  height: 30%;
-  justify-content: center;
-  align-items: center;
-  margin-left: 10px;
+    border: #E6E6E6 solid 2px;
+    border-radius: 5px;
+    font-size: 44px;
+    overflow-y: hidden;
+    width: 80%;
+    height: 30%;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
     p{
       display: none;
     }
@@ -132,11 +136,13 @@ const ButtonRed = styled.button`
   }
 
   @media screen and (max-width: 1024px){
-    height: 30%;
     width: 80%;
-
+    height: 10%;
+    /* border: 1px blue solid; */
+    
     span{
-      font-size: 24px;
+      /* padding: 4px 0; */
+      font-size: 28px;
       display: flex;
       justify-content: center;
     }
