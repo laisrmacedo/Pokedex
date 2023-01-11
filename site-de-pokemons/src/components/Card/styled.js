@@ -6,7 +6,11 @@ height: 260px;
 display: flex;
 align-items: flex-end;
 position: relative;
-/* border: 1px blue solid; */
+@media screen and (max-width: 425px){
+    /* border: 1px blue solid; */
+    width: 280px;
+    height: 300px;
+  }
 
 .image{
   position: absolute;
@@ -18,13 +22,20 @@ position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
+  @media screen and (max-width: 425px){
+    width: 150px;
+    height: 150px;
+    /* border: 2px solid red; */
+    top: 0px;
+    right: 0;
+  }
   
   img{
     object-fit: contain;
     width: 90%;
     height: 90%;
-      /* border: 2px solid red; */
-    }
+  }
+
 }
 
 .card{
@@ -38,7 +49,13 @@ position: relative;
   color: white;
   border-radius: 14px;
   /* border: 2px solid red; */ 
+    @media screen and (max-width: 425px){
+      flex-direction: column;
+      height: 230px;
+
+    }
   }
+
   
   .info{
     padding: 25px 0 23px 25px;
@@ -47,11 +64,24 @@ position: relative;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-  /* border: red 1px solid; */
+    @media screen and (max-width: 425px){
+      /* border: pink 1px solid; */
+      padding-top: 40px;
+      width: 100%;
+      position: relative;
+      z-index: 1;
+      height: 100%;
+      align-items: flex-start;
+    }
 
     >div{
       display: flex;
       flex-direction: column;
+    @media screen and (max-width: 425px){
+      /* align-items: center; */
+      gap: 5px;
+    }
+
     }
 
     h1,h4{
@@ -74,7 +104,14 @@ position: relative;
     justify-content: end;
     align-items: flex-end;
     position: relative;
-    /* border: 2px blue solid; */
+    @media screen and (max-width: 425px){
+      /* border: 2px blue solid; */
+      width: 100%;
+      position: absolute;
+      z-index: 0;
+      justify-content: center;
+    }
+
 
     img{
       position: absolute;
@@ -82,12 +119,18 @@ position: relative;
       right: 0;
       object-fit: cover;
       height: 100%;
+    @media screen and (max-width: 425px){
+      height: 100%;
+      top:0
+
+    }
+
     }
     button{
       /* border: 2px red solid; */
       width: 146px;
       height: 38px;
-      color: black;
+      color: ${(props) => props.pokemonFound != undefined? "green" : "black"};
       border-radius: 8px;
       position: absolute;
       z-index: 1;
@@ -96,6 +139,9 @@ position: relative;
       cursor: pointer;
       border: none;
       font-weight: 100;
+      @media screen and (max-width: 425px){
+        width: 120px;
+      }
     }
   }
 `

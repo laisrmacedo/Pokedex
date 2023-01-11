@@ -41,6 +41,7 @@ export const DetailsPage = () => {
             <img className='ball' src={pokemon.sprites?.other.dream_world.front_default} />
 
             <Card color={pokemon.types != undefined && getColors(pokemon.types[0].type.name)}>
+            {/* arrumar responsividade */}
               <img className='ball' src={ball} />
               <Left>
                 <div className='images'>

@@ -17,6 +17,10 @@ export const Modal = (props) => {
       font-size: 14px;
       color: black;
     }
+    @media screen and (max-width: 425px){
+      padding: 50px 40px;
+      width: 280px;
+    }
   `
   
   return(

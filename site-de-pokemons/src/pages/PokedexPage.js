@@ -31,6 +31,10 @@ export const Container = styled.div`
     color: white;
     font-size: 44px;
     margin-bottom: 50px;
+    @media screen and (max-width: 425px){
+      text-align: center;
+      margin-bottom: 20px;
+    }
   }
   
   >div{
@@ -38,6 +42,9 @@ export const Container = styled.div`
     flex-wrap: wrap;
     justify-content: start;
     gap: 20px;
+    @media screen and (max-width: 425px){
+      justify-content: center;
+    }
   }
 
 `

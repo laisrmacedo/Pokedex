@@ -14,7 +14,7 @@ export const Card = (props) => {
   const {getInfoPokemon} = context
 
   return (
-    <Container color={pokemon.types != undefined && getColors(pokemon.types[0].type.name)}>
+    <Container color={pokemon.types != undefined && getColors(pokemon.types[0].type.name)} pokemonFound={props.pokemonFound}>
       <div className='image'>
         <img src={pokemon.sprites?.other.dream_world.front_default}/>
       </div>
