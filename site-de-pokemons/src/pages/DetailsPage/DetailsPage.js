@@ -119,10 +119,22 @@ export const DetailsPage = () => {
                 </div>
                 <div className='moves'>
                   <h3>Moves:</h3>
-                  <span>{pokemon.moves != undefined && pokemon.moves[0].move.name}</span>
-                  <span>{pokemon.moves != undefined && pokemon.moves[1].move.name}</span>
-                  <span>{pokemon.moves != undefined && pokemon.moves[2].move.name}</span>
-                  <span>{pokemon.moves != undefined && pokemon.moves[3].move.name}</span>               
+                  {[1,2,3,4].map((item)=>{
+                    return <span >
+                      {pokemon.moves === undefined || pokemon.moves === null || pokemon.moves.length === 0? 
+                      <ChakraProvider>
+                        <Spinner 
+                          thickness='4px'
+                          speed='0.65s'
+                          emptyColor='gray.200'
+                          color='gray.700'
+                          overflow='hidden'
+                          size='sm'
+                        />
+                      </ChakraProvider> :
+                      pokemon.moves != undefined && pokemon.moves[item].move.name}
+                    </span>
+                  })}
                 </div>
               </Right>
             </Card>
