@@ -35,6 +35,7 @@ Você pode acessar o site clicando no link:
 - Pokémons que estão na Pokédex não podem ser adicionados novamente;
 - Alerta visual quando um pokémon é adicionado à Pokédex;
 - Alerta visual quando um pokémon é removido da Pokédex;
+- Layout responsivo.
 
 ## 🛠 Tecnologias Utilizadas
 
