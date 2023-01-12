@@ -6,6 +6,8 @@ import {getTypes} from '../../utils/returnPokemonType'
 import {getColors} from '../../utils/returnCardColor'
 import { GlobalContext } from '../../context/GlobalContext';
 import {useContext} from 'react'
+import { ChakraProvider, Spinner } from '@chakra-ui/react'
+import noImage from '../../assets/sem-imagem.png'
 
 export const Card = (props) => {
   const navigate = useNavigate()
@@ -16,7 +18,22 @@ export const Card = (props) => {
   return (
     <Container color={pokemon.types != undefined && getColors(pokemon.types[0].type.name)} pokemonFound={props.pokemonFound}>
       <div className='image'>
-        <img src={pokemon.sprites?.other.dream_world.front_default}/>
+        {pokemon.sprites === undefined? 
+        <ChakraProvider>
+          <Spinner 
+            thickness='4px'
+            speed='0.65s'
+            emptyColor='gray.200'
+            color='gray.700'
+            overflow='hidden'
+            size='xl'
+          />
+        </ChakraProvider> : 
+        pokemon.sprites?.other["official-artwork"].front_default === null? 
+        <img src={noImage}/> :
+        // <img src={pokemon.sprites?.other.dream_world.front_default}/>}
+        <img src={pokemon.sprites?.other["official-artwork"].front_default}/>}
+      
       </div>
       <div className='card'>
         <div className='info'>

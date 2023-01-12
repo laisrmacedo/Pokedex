@@ -85,6 +85,11 @@ position: relative;
       z-index: 1;
       height: 100%;
       align-items: flex-start;
+
+      h1{
+        font-size: 28px;
+      }
+
     }
 
     >div{
@@ -99,6 +104,7 @@ position: relative;
     h1,h4{
       font-family: 'Inter', sans-serif;
     }
+
 
     >button{
       display: flex;

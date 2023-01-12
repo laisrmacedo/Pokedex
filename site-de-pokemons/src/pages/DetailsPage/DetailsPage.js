@@ -6,10 +6,13 @@ import { Header } from '../../components/Header'
 import { Main, Container, Card, Left, Right, PokemonTypes, Stat } from "./styled";
 import ball from "../../assets/big-ball-card.png";
 import { ChakraProvider, Progress } from '@chakra-ui/react'
+import { Spinner } from '@chakra-ui/react'
 import {getTypes} from '../../utils/returnPokemonType'
 import {getColors} from '../../utils/returnCardColor'
 import { GlobalContext } from '../../context/GlobalContext';
 import {goToErrorPage} from '../../router/coordinator'
+import noImage from '../../assets/sem-imagem.png'
+
 
 
 export const DetailsPage = () => {
@@ -22,24 +25,24 @@ export const DetailsPage = () => {
 
   const [pokemon, setPokemon] = useState({})
 
-  useEffect(() => {
-    const requestPokemon = async () => {
-      try {
-        const responsePokemon = await getInfoPokemon(name)
+  const requestPokemon = async () => {
+    try {
+      const responsePokemon = await getInfoPokemon(name)
 
-        if(responsePokemon === undefined){
-          goToErrorPage(navigate)
-        }else{
-          setPokemon(responsePokemon)
-        }
-
-      } catch (error) {
-        console.log(error)
+      if(responsePokemon === undefined){
+        goToErrorPage(navigate)
+      }else{
+        setPokemon(responsePokemon)
       }
+
+    } catch (error) {
+      console.log(error)
     }
+  }
+
+  useEffect(() => {
     requestPokemon()
   }, [])
-
 
   return (
     <>
@@ -48,10 +51,24 @@ export const DetailsPage = () => {
         <Container>
           <h1>Detalhes</h1>
           <div>
-            <img className='ball' src={pokemon.sprites?.other.dream_world.front_default} />
-
+            <span>
+              {pokemon.sprites === undefined? 
+                <ChakraProvider>
+                  <Spinner 
+                    thickness='4px'
+                    speed='0.65s'
+                    emptyColor='gray.200'
+                    color='gray.700'
+                    overflow='hidden'
+                    size='xl'
+                  />
+                </ChakraProvider> : 
+                pokemon.sprites?.other["official-artwork"].front_default === null? 
+                <img src={noImage}/> :
+                // <img src={pokemon.sprites?.other.dream_world.front_default}/>}
+                <img src={pokemon.sprites?.other["official-artwork"].front_default}/>}
+              </span>
             <Card color={pokemon.types != undefined && getColors(pokemon.types[0].type.name)}>
-            {/* arrumar responsividade */}
               <img src={ball} />
               <Left>
                 <div className='images'>

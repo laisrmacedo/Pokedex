@@ -38,18 +38,21 @@ export const Container = styled.div`
       min-height: 1300px;
       width: 96%;
     }
-    
-    >img{
+    >span{
       position: absolute;
       z-index: 2;
       top: 0;
       right: 40px;
       width: 240px;
       @media screen and (max-width: 425px){
-        height: 200px;
         right: 0;
+        height: 200px;
+      }
+      >img{
+        height: 100%;
       }
     }
+    
   }
 `
 export const Card = styled.div`
