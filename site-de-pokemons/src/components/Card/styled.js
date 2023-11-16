@@ -6,7 +6,11 @@ height: 260px;
 display: flex;
 align-items: flex-end;
 position: relative;
-/* border: 1px blue solid; */
+
+@media screen and (max-width: 425px){
+  width: 280px;
+  height: 300px;
+}
 
 .image{
   position: absolute;
@@ -18,13 +22,20 @@ position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
+  @media screen and (max-width: 425px){
+    width: 150px;
+    height: 150px;
+    /* border: 2px solid red; */
+    top: 0px;
+    right: 0;
+  }
   
   img{
     object-fit: contain;
     width: 90%;
     height: 90%;
-      /* border: 2px solid red; */
-    }
+  }
+
 }
 
 .card{
@@ -38,64 +49,128 @@ position: relative;
   color: white;
   border-radius: 14px;
   /* border: 2px solid red; */ 
+    @media screen and (max-width: 425px){
+      flex-direction: column;
+      height: 230px;
+    }
+
+    >img{
+      position: absolute;
+      z-index: 0;
+      right: 0;
+      object-fit: cover;
+      height: 100%;
+
+      @media screen and (max-width: 425px){
+        height: 90%;
+        top: 0;
+      }
   }
+
   
   .info{
     padding: 25px 0 23px 25px;
-    width: 48%;
+    width: 100%;
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-  /* border: red 1px solid; */
+    /* align-items: flex-start; */
+    /* border: blue 1px solid; */
+    
+    @media screen and (max-width: 425px){
+      padding-top: 40px;
+      width: 100%;
+      position: relative;
+      z-index: 1;
+      height: 100%;
+      align-items: flex-start;
+
+      h1{
+        font-size: 28px;
+      }
+
+    }
 
     >div{
       display: flex;
       flex-direction: column;
+      /* border: magenta 1px solid; */
+      @media screen and (max-width: 425px){
+        gap: 5px;
+      }
     }
 
     h1,h4{
       font-family: 'Inter', sans-serif;
     }
 
-    button{
+
+    >button{
       display: flex;
+      align-items: flex-end;
       background-color: transparent;
+      position: relative;
+      left: 0;
+      bottom: 0;
       border: none;
-      width: 74px;
+      font-weight: bold;
+      /* width: 74px; */
+      color: white;
+      font-size: 14px;
       cursor: pointer;
       text-decoration: underline;
     }
   }
+
   .background{
     width: 52%;
     height: 100%;
     display: flex;
     justify-content: end;
     align-items: flex-end;
-    position: relative;
+    /* position: relative; */
+    position: absolute;
+    right: 0;
+    z-index: 1;
     /* border: 2px blue solid; */
+    @media screen and (max-width: 425px){
+      width: 65%;
+      justify-content: center;
+    }
 
-    img{
+
+    /* img{
       position: absolute;
       z-index: 0;
       right: 0;
       object-fit: cover;
       height: 100%;
+
+      @media screen and (max-width: 425px){
+        height: 70%;
+        top: 0;
+      } */
     }
+
     button{
-      /* border: 2px red solid; */
+      border: 2px red solid;
       width: 146px;
       height: 38px;
-      color: black;
+      color: ${(props) => props.pokemonFound != undefined? "green" : "black"};
+      background-color: ${(props) => props.pokemonFound != undefined? "transparent" : "white"};;
       border-radius: 8px;
       position: absolute;
-      z-index: 1;
+      z-index: 2;
       bottom: 23px;
       right: 26px;
       cursor: pointer;
-      border: none;
+      border: ${(props) => props.pokemonFound != undefined? "green 1px solid" : "none"};;
       font-weight: 100;
+
+      @media screen and (max-width: 425px){
+        width: 120px;
+      }
     }
   }
 `

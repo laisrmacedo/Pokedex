@@ -11,7 +11,7 @@ export const Router = () => {
         <Route index element={<HomePage/>}/>
         <Route path={`/pokedex`} element={<PokedexPage/>}/>
         <Route path={`/details/:name`} element={<DetailsPage/>}/>
-        <Route path='*' element={<ErrorPage/>}/>
+        <Route path={`*`} element={<ErrorPage/>}/>
       </Routes>
     </BrowserRouter>
   )

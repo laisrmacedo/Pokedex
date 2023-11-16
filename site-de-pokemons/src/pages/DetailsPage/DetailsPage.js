@@ -1,35 +1,48 @@
 import {Footer} from "../../components/Footer"
 import { useParams } from 'react-router-dom'
 import { useState, useEffect, useContext } from 'react'
-import axios from "axios";
+import { useNavigate } from 'react-router-dom'
 import { Header } from '../../components/Header'
 import { Main, Container, Card, Left, Right, PokemonTypes, Stat } from "./styled";
 import ball from "../../assets/big-ball-card.png";
 import { ChakraProvider, Progress } from '@chakra-ui/react'
+import { Spinner } from '@chakra-ui/react'
 import {getTypes} from '../../utils/returnPokemonType'
 import {getColors} from '../../utils/returnCardColor'
 import { GlobalContext } from '../../context/GlobalContext';
+import {goToErrorPage} from '../../router/coordinator'
+import noImage from '../../assets/sem-imagem.png'
+
+
 
 export const DetailsPage = () => {
   const { name } = useParams();
+  const navigate = useNavigate()
+
 
   const context = useContext(GlobalContext)
   const {getInfoPokemon} = context
 
   const [pokemon, setPokemon] = useState({})
 
-  useEffect(() => {
-    const requestPokemon = async () => {
-      try {
-        const responsePokemon = await getInfoPokemon(name)
+  const requestPokemon = async () => {
+    try {
+      const responsePokemon = await getInfoPokemon(name)
+
+      if(responsePokemon === undefined){
+        goToErrorPage(navigate)
+      }else{
         setPokemon(responsePokemon)
-      } catch (error) {
-        console.log(error)
       }
+
+    } catch (error) {
+      console.log(error)
     }
+  }
+
+  useEffect(() => {
     requestPokemon()
   }, [])
-
 
   return (
     <>
@@ -38,10 +51,25 @@ export const DetailsPage = () => {
         <Container>
           <h1>Detalhes</h1>
           <div>
-            <img className='ball' src={pokemon.sprites?.other.dream_world.front_default} />
-
+            <span>
+              {pokemon.sprites === undefined? 
+                <ChakraProvider>
+                  <Spinner 
+                    thickness='4px'
+                    speed='0.65s'
+                    emptyColor='gray.200'
+                    color='gray.700'
+                    overflow='hidden'
+                    size='xl'
+                  />
+                </ChakraProvider> : 
+                pokemon.sprites?.other["official-artwork"].front_default === null? 
+                <img src={noImage}/> :
+                // <img src={pokemon.sprites?.other.dream_world.front_default}/>}
+                <img src={pokemon.sprites?.other["official-artwork"].front_default}/>}
+              </span>
             <Card color={pokemon.types != undefined && getColors(pokemon.types[0].type.name)}>
-              <img className='ball' src={ball} />
+              <img src={ball} />
               <Left>
                 <div className='images'>
                   <div>
@@ -91,10 +119,22 @@ export const DetailsPage = () => {
                 </div>
                 <div className='moves'>
                   <h3>Moves:</h3>
-                  <span>{pokemon.moves != undefined && pokemon.moves[0].move.name}</span>
-                  <span>{pokemon.moves != undefined && pokemon.moves[1].move.name}</span>
-                  <span>{pokemon.moves != undefined && pokemon.moves[2].move.name}</span>
-                  <span>{pokemon.moves != undefined && pokemon.moves[3].move.name}</span>               
+                  {[1,2,3,4].map((item)=>{
+                    return <span >
+                      {pokemon.moves === undefined || pokemon.moves === null || pokemon.moves.length === 0? 
+                      <ChakraProvider>
+                        <Spinner 
+                          thickness='4px'
+                          speed='0.65s'
+                          emptyColor='gray.200'
+                          color='gray.700'
+                          overflow='hidden'
+                          size='sm'
+                        />
+                      </ChakraProvider> :
+                      pokemon.moves != undefined && pokemon.moves[item].move.name}
+                    </span>
+                  })}
                 </div>
               </Right>
             </Card>

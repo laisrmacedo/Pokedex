@@ -20,30 +20,43 @@ export const Container = styled.div`
   >h1{
     color: white;
     font-size: 44px;
-    /* margin-bottom: 10px; */
     overflow-y: hidden;
+    @media screen and (max-width: 425px){
+      margin-bottom: 40px;
+      text-align: center;
+    }
   }
   
   >div{
     min-height: 580px;
-    /* border: 2px blue solid; */
     display: flex;
     align-items: flex-end;
     position: relative;
-    
-    >img{
-      /* border: 2px blue solid; */
+    /* border: 2px blue solid; */
+    @media screen and (max-width: 425px){
+      margin: 0 auto;
+      min-height: 1300px;
+      width: 96%;
+    }
+    >span{
       position: absolute;
       z-index: 2;
       top: 0;
       right: 40px;
       width: 240px;
+      @media screen and (max-width: 425px){
+        right: 0;
+        height: 200px;
+      }
+      >img{
+        height: 100%;
+      }
     }
+    
   }
 `
 export const Card = styled.div`
   display: flex;
-  /* flex-wrap: wrap; */
   justify-content: center;
   gap: 30px;
   width: 100%;
@@ -54,6 +67,23 @@ export const Card = styled.div`
   padding: 20px;
   /* border: 2px blue solid; */
 
+  @media screen and (max-width: 425px){
+    flex-direction: column-reverse;
+    height: 90%;
+    
+  }
+  
+  >img{
+    position: absolute;
+    height: 95%;
+    z-index: 0;
+    right: 0;
+    @media screen and (max-width: 425px){
+      height:25%;
+      top: 0
+    }
+  }
+
   .ball{
     position: absolute;
     height: 95%;
@@ -61,20 +91,27 @@ export const Card = styled.div`
     right: 0;
   }
 
+
 `
 export const Left = styled.div`
-  /* border: 2px red solid; */
   width: 50%;
   display: flex;
   gap: 20px;
-
+  @media screen and (max-width: 425px){
+    width: 100%;
+    flex-direction: column-reverse;
+  }
   
   .images{
     width: 50%;
     display: flex;
     flex-direction: column;
     gap: 20px;
+    @media screen and (max-width: 425px){
+      width: 100%;
+    }
     div{
+      /* border: 2px red solid; */
       display: flex;
       justify-content: center;
       align-items: center;
@@ -97,10 +134,10 @@ export const Left = styled.div`
     gap: 16px;
     h3{
       color: black;
-
     }
-    
-    /* width: 50%; */
+    @media screen and (max-width: 425px){
+      width: 100%;
+    }
   }
   `
 export const Right = styled.div`
@@ -109,14 +146,22 @@ export const Right = styled.div`
   flex-direction: column;
   position: relative;
   justify-content: space-between;
+  @media screen and (max-width: 425px){
+    /* border: 2px red solid; */
+    width: 100%;
+    gap: 20px;
+  }
 
   .pokemonData{
     h1{
       font-size: 44px;
+      @media screen and (max-width: 425px){
+        font-size: 32px;
+      }
     }
     h2{
       font-size: 20px;
-      font-weight: 200;
+      font-weight: 800;
     }
     div{
       display: flex;
@@ -124,6 +169,9 @@ export const Right = styled.div`
       img{
         height: 31px;
       }
+    }
+    @media screen and (max-width: 425px){
+      height: 150px;
     }
   }
   
@@ -140,6 +188,11 @@ export const Right = styled.div`
     height: 65%;
     width: 50%;
     gap: 20px;
+
+    @media screen and (max-width: 425px){
+      width: 100%;
+    }
+    
     /* position: relative; */
 
     

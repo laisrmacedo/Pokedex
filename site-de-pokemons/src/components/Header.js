@@ -4,7 +4,7 @@ import {goToHomePage, goToPokedexPage} from '../router/coordinator'
 import { useNavigate, useParams } from 'react-router-dom'
 import { GlobalContext } from '../context/GlobalContext';
 import {useContext, useState, useEffect} from 'react'
-
+import favicon from '../assets/favicon.png'
 
 const Container = styled.div`
   height: 160px;
@@ -40,9 +40,26 @@ const ButtonGreen = styled.button`
   border: #E6E6E6 solid 2px;
   width: 100%;
   border-radius: 5px;
-  font-size: 18px;
-  color: black;
   cursor: pointer;
+  p{
+    font-size: 18px;
+    color: black;
+  }
+  span{
+    display: none;
+  }
+  @media screen and (max-width: 425px){
+    padding: 0;
+    height: 30%;
+    width: 80%;
+    p{
+      display: none;
+    }
+    span{
+      display: flex;
+      justify-content: center;
+    }
+  }
 `
 const ButtonBlue = styled.button`
   background-color: #33A4F5;
@@ -52,6 +69,28 @@ const ButtonBlue = styled.button`
   border-radius: 5px;
   font-size: 18px;
   cursor: pointer;
+  img{
+    display: none;
+  }
+  @media screen and (max-width: 425px){
+    width: 80%;
+    height: 50%;
+    background-color: transparent;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    /* border: 1px red solid; */
+
+    p{
+      display: none;
+    }
+    img{
+      display: flex;
+      width: 95%;
+      opacity: 0.9;
+    }
+  }
+
 `
 const ButtonBlack = styled.button`
   background-color: white;
@@ -61,12 +100,23 @@ const ButtonBlack = styled.button`
   cursor: pointer;
   display: flex;
   justify-content: flex-start;
+
   p{
     text-decoration: underline;
     color: black;
+
   }
+
   @media screen and (max-width: 1024px){
-  font-size: 44px;
+    border: #E6E6E6 solid 2px;
+    border-radius: 5px;
+    font-size: 44px;
+    overflow-y: hidden;
+    width: 80%;
+    height: 30%;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
     p{
       display: none;
     }
@@ -86,10 +136,13 @@ const ButtonRed = styled.button`
   }
 
   @media screen and (max-width: 1024px){
-    height: 30%;
-
+    width: 80%;
+    height: 10%;
+    /* border: 1px blue solid; */
+    
     span{
-      font-size: 24px;
+      /* padding: 4px 0; */
+      font-size: 28px;
       display: flex;
       justify-content: center;
     }
@@ -121,7 +174,10 @@ export const Header = (props) => {
     const pokemonFound = newList.filter((element) => element.name == name)
     
     if(pokemonFound.length === 0){
-      return setButton(<ButtonGreen onClick={() => sendToPokedex(name)}>Capturar!</ButtonGreen>) 
+      return setButton(<ButtonGreen onClick={() => sendToPokedex(name)}>
+          <p>Capturar!</p>
+          <span>🖐</span>
+        </ButtonGreen>) 
     }else{
       return setButton(<ButtonRed onClick={() => deletePokemon(name)}><span>X</span><p>Excluir da Pokédex</p></ButtonRed>) 
     }
@@ -139,7 +195,11 @@ export const Header = (props) => {
         </span>
         <img src={logoPokemon}/>
         <span>
-          {props.isHomePage && <ButtonBlue onClick={() => goToPokedexPage(navigate)}>Pokédex</ButtonBlue>}
+          {props.isHomePage && 
+            <ButtonBlue onClick={() => goToPokedexPage(navigate)}>
+              <p>Pokédex</p>
+              <img src={favicon}/>
+            </ButtonBlue>}
           {props.isDetailPage && button}
         </span>
       </div>

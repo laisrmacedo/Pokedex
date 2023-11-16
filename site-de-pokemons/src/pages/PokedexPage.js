@@ -1,8 +1,7 @@
 import {Footer} from "../components/Footer"
 import styled from "styled-components";
-import { useNavigate } from 'react-router-dom'
 import { Header } from '../components/Header'
-import { useContext, useEffect, useState } from 'react';
+import { useContext} from 'react';
 import { GlobalContext } from '../context/GlobalContext';
 import { Card } from '../components/Card/Card'
 
@@ -25,12 +24,15 @@ export const Container = styled.div`
   padding-top: 50px;
   display: flex;
   flex-direction: column;
-  /* border: 2px red solid; */
   
   >h1{
     color: white;
     font-size: 44px;
     margin-bottom: 50px;
+    @media screen and (max-width: 425px){
+      text-align: center;
+      margin-bottom: 20px;
+    }
   }
   
   >div{
@@ -38,24 +40,16 @@ export const Container = styled.div`
     flex-wrap: wrap;
     justify-content: start;
     gap: 20px;
+    @media screen and (max-width: 425px){
+      justify-content: center;
+    }
   }
 
 `
 export const PokedexPage = (props) => {
 
-  // const navigate = useNavigate()
-
   const context = useContext(GlobalContext)
   const { listPokedex, deletePokemon } = context
-
-  // const deletePokemon = (captured) => {
-  //   const newList = [...listPokedex]
-  //   const pokemonFound = newList.filter((element) => {
-  //     return element.id !== captured.id
-  //   })
-  //   setListPokedex(pokemonFound)
-  // }
-
 
   return (
     <>
